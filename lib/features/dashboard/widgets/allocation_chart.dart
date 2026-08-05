@@ -30,7 +30,7 @@ class AllocationChart extends StatelessWidget {
           Text(
             'Portfolio Allocation',
             style: GoogleFonts.inter(
-              color: AppColors.textPrimaryDark ?? Colors.white,
+              color: AppColors.textPrimaryDark,
               fontSize: 18,
               fontWeight: FontWeight.w600,
             ),
@@ -89,7 +89,7 @@ class AllocationChart extends StatelessWidget {
                       Text(
                         'Total Metals',
                         style: GoogleFonts.inter(
-                          color: AppColors.textSecondaryDark ?? Colors.grey[400],
+                          color: AppColors.textSecondaryDark,
                           fontSize: 12,
                         ),
                       ),
@@ -97,7 +97,7 @@ class AllocationChart extends StatelessWidget {
                       Text(
                         '100%',
                         style: GoogleFonts.inter(
-                          color: AppColors.textPrimaryDark ?? Colors.white,
+                          color: AppColors.textPrimaryDark,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
@@ -109,7 +109,7 @@ class AllocationChart extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               _LegendItem(color: AppColors.gold, label: 'Gold'),
@@ -145,7 +145,7 @@ class _LegendItem extends StatelessWidget {
         Text(
           label,
           style: GoogleFonts.inter(
-            color: AppColors.textPrimaryDark ?? Colors.white,
+            color: AppColors.textPrimaryDark,
             fontSize: 14,
             fontWeight: FontWeight.w500,
           ),
