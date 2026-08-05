@@ -97,14 +97,3 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-
-  fonts:
-    - family: SF Pro Display
-      fonts:
-        - asset: assets/fonts/SFProDisplay-Regular.otf
-        - asset: assets/fonts/SFProDisplay-Medium.otf
-          weight: 500
-        - asset: assets/fonts/SFProDisplay-Semibold.otf
-          weight: 600
-        - asset: assets/fonts/SFProDisplay-Bold.otf
-          weight: 700

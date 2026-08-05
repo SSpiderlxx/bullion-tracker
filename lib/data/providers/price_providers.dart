@@ -35,3 +35,7 @@ final priceHistoryProvider = FutureProvider.family<List<MetalPrice>, ({MetalType
   final currency = ref.watch(selectedCurrencyProvider);
   return repo.getPriceHistory(args.metal, currency, args.days);
 });
+final spotPriceProvider = Provider.family<double, MetalType>((ref, metal) {
+  final prices = ref.watch(livePricesProvider).value;
+  return prices?[metal]?.pricePerTroyOz ?? 0.0;
+});

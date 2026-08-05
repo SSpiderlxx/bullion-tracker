@@ -1,17 +1,7 @@
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import '../theme/app_colors.dart';
-
-enum CurrencyCode {
-  gbp('GBP', '£'),
-  usd('USD', r'$'),
-  eur('EUR', '€');
-
-  final String code;
-  final String symbol;
-
-  const CurrencyCode(this.code, this.symbol);
-}
+import '../../domain/entities/currency_code.dart';
 
 sealed class CurrencyFormatter {
   static String format(double amount, {CurrencyCode currency = CurrencyCode.gbp}) {

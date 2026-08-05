@@ -8,6 +8,7 @@ import '../widgets/cost_breakdown_card.dart';
 import 'add_holding_screen.dart';
 import 'sell_holding_screen.dart';
 import '../../../data/providers/holdings_providers.dart';
+import '../../../data/providers/price_providers.dart';
 
 class HoldingDetailScreen extends HookConsumerWidget {
   final Holding holding;
