@@ -58,7 +58,7 @@ class PricesDao {
     ''');
     
     for (final p in history) {
-      final id = '\${p.metalType.name}_\${p.currency.name}_\${p.timestamp.millisecondsSinceEpoch}';
+      final id = '${p.metalType.name}_${p.currency.name}_${p.timestamp.millisecondsSinceEpoch}';
       stmt.execute([
         id,
         p.metalType.index,

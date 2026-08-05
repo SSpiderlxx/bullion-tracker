@@ -16,7 +16,7 @@ class MetalPriceApiService {
   Future<Map<MetalType, MetalPrice>> fetchLatestPrices(CurrencyCode currency) async {
     try {
       final response = await _dio.get(
-        '\$_baseUrl/latest',
+        '$_baseUrl/latest',
         queryParameters: {
           'api_key': _apiKey,
           'base': currency.name.toUpperCase(),
@@ -56,7 +56,7 @@ class MetalPriceApiService {
       }
       throw Exception('Failed to fetch metal prices');
     } catch (e) {
-      throw Exception('Network error: \$e');
+      throw Exception('Network error: $e');
     }
   }
 
