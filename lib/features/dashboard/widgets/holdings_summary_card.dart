@@ -23,7 +23,7 @@ class HoldingsSummaryCard extends StatelessWidget {
           Text(
             'Your Vault',
             style: GoogleFonts.inter(
-              color: AppColors.textPrimaryDark ?? Colors.white,
+              color: AppColors.textPrimaryDark,
               fontSize: 18,
               fontWeight: FontWeight.w600,
             ),
@@ -94,7 +94,7 @@ class _MetalRow extends StatelessWidget {
             Text(
               metalName,
               style: GoogleFonts.inter(
-                color: AppColors.textPrimaryDark ?? Colors.white,
+                color: AppColors.textPrimaryDark,
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
@@ -107,7 +107,7 @@ class _MetalRow extends StatelessWidget {
             Text(
               '${ounces.toStringAsFixed(3)} oz',
               style: GoogleFonts.inter(
-                color: AppColors.textPrimaryDark ?? Colors.white,
+                color: AppColors.textPrimaryDark,
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
               ),
@@ -116,7 +116,7 @@ class _MetalRow extends StatelessWidget {
             Text(
               '${grams.toStringAsFixed(1)} g',
               style: GoogleFonts.inter(
-                color: AppColors.textSecondaryDark ?? Colors.grey[400],
+                color: AppColors.textSecondaryDark,
                 fontSize: 12,
               ),
             ),

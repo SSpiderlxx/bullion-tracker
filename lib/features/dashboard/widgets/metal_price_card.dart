@@ -29,19 +29,28 @@ class MetalPriceCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              Container(
-                width: 8,
-                height: 8,
-                decoration: BoxDecoration(
-                  color: accentColor,
-                  shape: BoxShape.circle,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(6),
+                child: Image.asset(
+                  isGold ? 'assets/images/gold_bar.jpg' : 'assets/images/silver_coin.jpg',
+                  width: 20,
+                  height: 20,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) => Container(
+                    width: 8,
+                    height: 8,
+                    decoration: BoxDecoration(
+                      color: accentColor,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(width: 8),
               Text(
                 name,
                 style: GoogleFonts.inter(
-                  color: AppColors.textSecondaryDark ?? Colors.grey[300],
+                  color: AppColors.textSecondaryDark,
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
                 ),
@@ -52,7 +61,7 @@ class MetalPriceCard extends StatelessWidget {
           Text(
             CurrencyFormatter.format(price.pricePerTroyOz),
             style: GoogleFonts.inter(
-              color: AppColors.textPrimaryDark ?? Colors.white,
+              color: AppColors.textPrimaryDark,
               fontSize: 22,
               fontWeight: FontWeight.w700,
               letterSpacing: -0.5,
