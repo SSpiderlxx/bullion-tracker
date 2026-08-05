@@ -24,7 +24,7 @@ class PnlCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: glowColor.withOpacity(0.08),
+            color: glowColor.withValues(alpha: 0.08),
             blurRadius: 20,
             spreadRadius: 2,
           ),
@@ -42,7 +42,7 @@ class PnlCard extends StatelessWidget {
                 Text(
                   'Total Invested',
                   style: GoogleFonts.inter(
-                    color: AppColors.textSecondaryDark ?? Colors.grey[400],
+                    color: AppColors.textSecondaryDark,
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                   ),
@@ -51,7 +51,7 @@ class PnlCard extends StatelessWidget {
                 Text(
                   CurrencyFormatter.format(summary.totalInvested),
                   style: GoogleFonts.inter(
-                    color: AppColors.textPrimaryDark ?? Colors.white,
+                    color: AppColors.textPrimaryDark,
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
                   ),
@@ -61,7 +61,7 @@ class PnlCard extends StatelessWidget {
             Container(
               width: 1,
               height: 40,
-              color: AppColors.surfaceDark.withOpacity(0.5),
+              color: AppColors.surfaceDark.withValues(alpha: 0.5),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -69,7 +69,7 @@ class PnlCard extends StatelessWidget {
                 Text(
                   'All-Time P&L',
                   style: GoogleFonts.inter(
-                    color: AppColors.textSecondaryDark ?? Colors.grey[400],
+                    color: AppColors.textSecondaryDark,
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                   ),

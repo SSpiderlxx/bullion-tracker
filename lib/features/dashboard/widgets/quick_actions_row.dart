@@ -70,7 +70,7 @@ class _ActionButton extends StatelessWidget {
             Text(
               label,
               style: GoogleFonts.inter(
-                color: AppColors.textPrimaryDark ?? Colors.white,
+                color: AppColors.textPrimaryDark,
                 fontSize: 13,
                 fontWeight: FontWeight.w500,
               ),

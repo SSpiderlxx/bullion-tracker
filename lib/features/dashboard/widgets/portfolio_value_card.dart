@@ -26,7 +26,7 @@ class PortfolioValueCard extends StatelessWidget {
           Text(
             'Total Portfolio Value',
             style: GoogleFonts.inter(
-              color: AppColors.textSecondaryDark ?? Colors.grey[400],
+              color: AppColors.textSecondaryDark,
               fontSize: 15,
               fontWeight: FontWeight.w500,
               letterSpacing: 0.3,
@@ -37,7 +37,7 @@ class PortfolioValueCard extends StatelessWidget {
             value: summary.currentValue,
             format: (val) => CurrencyFormatter.format(val),
             style: GoogleFonts.inter(
-              color: AppColors.textPrimaryDark ?? Colors.white,
+              color: AppColors.textPrimaryDark,
               fontSize: 36,
               fontWeight: FontWeight.w700,
               letterSpacing: -1.5,
