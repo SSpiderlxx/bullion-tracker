@@ -140,7 +140,7 @@ class AddHoldingScreen extends HookConsumerWidget {
                 Expanded(
                   flex: 3,
                   child: DropdownButtonFormField<WeightUnit>(
-                    value: selectedUnit.value,
+                    initialValue: selectedUnit.value,
                     decoration: const InputDecoration(labelText: 'Unit', border: OutlineInputBorder()),
                     items: WeightUnit.values.map((u) {
                       return DropdownMenuItem(value: u, child: Text(u.displayName));

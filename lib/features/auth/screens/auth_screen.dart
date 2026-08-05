@@ -29,14 +29,22 @@ class AuthScreen extends StatelessWidget {
                   const Spacer(),
                   Center(
                     child: Container(
-                      padding: const EdgeInsets.all(24),
+                      padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         gradient: LinearGradient(
-                          colors: [AppColors.gold.withOpacity(0.2), AppColors.goldAccent.withOpacity(0.05)],
+                          colors: [AppColors.gold.withValues(alpha: 0.2), AppColors.goldAccent.withValues(alpha: 0.05)],
                         ),
                       ),
-                      child: const Icon(Icons.diamond_outlined, size: 80, color: AppColors.gold),
+                      child: ClipOval(
+                        child: Image.asset(
+                          'assets/icons/bullion_logo.jpg',
+                          width: 80,
+                          height: 80,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) => const Icon(Icons.shield, size: 80, color: AppColors.gold),
+                        ),
+                      ),
                     ),
                   ).animate().scale(duration: 600.ms, curve: Curves.easeOutBack),
                   const SizedBox(height: 32),

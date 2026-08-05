@@ -39,8 +39,8 @@ class PriceSparkline extends StatelessWidget {
       height: 60,
       child: LineChart(
         LineChartData(
-          gridData: FlGridData(show: false),
-          titlesData: FlTitlesData(show: false),
+          gridData: const FlGridData(show: false),
+          titlesData: const FlTitlesData(show: false),
           borderData: FlBorderData(show: false),
           minX: 0,
           maxX: (data.length - 1).toDouble(),
