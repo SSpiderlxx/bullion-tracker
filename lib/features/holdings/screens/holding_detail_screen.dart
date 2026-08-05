@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import '../../../domain/entities/holding.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../core/widgets/glass_card.dart';
+import '../../../core/widgets/metal_icon.dart';
 import '../widgets/cost_breakdown_card.dart';
 import 'add_holding_screen.dart';
 import 'sell_holding_screen.dart';
@@ -33,14 +34,13 @@ class HoldingDetailScreen extends HookConsumerWidget {
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
-                color: holding.metalType.displayColor.withOpacity(0.1),
+                color: holding.metalType.displayColor.withValues(alpha: 0.1),
                 child: Center(
                   child: Hero(
                     tag: 'metal_icon_${holding.id}',
-                    child: Icon(
-                      holding.metalType.name == 'gold' ? Icons.monetization_on : Icons.circle,
-                      size: 80,
-                      color: holding.metalType.displayColor,
+                    child: MetalIcon(
+                      type: holding.metalType,
+                      size: 88,
                     ),
                   ),
                 ),

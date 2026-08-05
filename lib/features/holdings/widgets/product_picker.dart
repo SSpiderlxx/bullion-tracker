@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/bullion_products.dart';
 import '../../../domain/entities/metal_type.dart' as entity;
-import '../../../core/theme/app_colors.dart';
 
 class ProductPicker extends StatelessWidget {
   final entity.MetalType metalType;
@@ -66,7 +65,7 @@ class ProductPicker extends StatelessWidget {
                 width: 40,
                 height: 4,
                 decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.3),
+                  color: Colors.grey.withValues(alpha: 0.3),
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../domain/entities/metal_type.dart';
-import '../../../core/theme/app_colors.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 class MetalTypeSelector extends StatelessWidget {
@@ -17,7 +16,7 @@ class MetalTypeSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.5),
+        color: Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
         borderRadius: BorderRadius.circular(12),
       ),
       padding: const EdgeInsets.all(4),
@@ -32,7 +31,7 @@ class MetalTypeSelector extends StatelessWidget {
                 duration: const Duration(milliseconds: 200),
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 decoration: BoxDecoration(
-                  color: isSelected ? type.displayColor.withOpacity(0.2) : Colors.transparent,
+                  color: isSelected ? type.displayColor.withValues(alpha: 0.2) : Colors.transparent,
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(
                     color: isSelected ? type.displayColor : Colors.transparent,

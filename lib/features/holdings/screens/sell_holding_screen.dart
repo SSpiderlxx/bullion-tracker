@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import '../../../domain/entities/holding.dart';
+import '../../../core/widgets/metal_icon.dart';
 import '../widgets/sale_summary_card.dart';
 import '../../../data/providers/holdings_providers.dart';
 
@@ -48,13 +49,7 @@ class SellHoldingScreen extends HookConsumerWidget {
         children: [
           ListTile(
             contentPadding: EdgeInsets.zero,
-            leading: CircleAvatar(
-              backgroundColor: holding.metalType.displayColor.withOpacity(0.2),
-              child: Icon(
-                holding.metalType.name == 'gold' ? Icons.monetization_on : Icons.circle,
-                color: holding.metalType.displayColor,
-              ),
-            ),
+            leading: MetalIcon(type: holding.metalType, size: 40),
             title: Text(holding.productName),
             subtitle: Text('${holding.displayQuantity} ${holding.weightUnit.shortName}'),
           ),
