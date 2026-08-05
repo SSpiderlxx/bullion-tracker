@@ -50,10 +50,10 @@ class _PortfolioTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       padding: const EdgeInsets.all(16),
-      children: [
-        const PeriodSelector(),
-        const SizedBox(height: 24),
-        const SizedBox(
+      children: const [
+        PeriodSelector(),
+        SizedBox(height: 24),
+        SizedBox(
           height: 300,
           child: PortfolioChart(),
         ),
@@ -67,8 +67,8 @@ class _AllocationTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       padding: const EdgeInsets.all(16),
-      children: [
-        const SizedBox(
+      children: const [
+        SizedBox(
           height: 300,
           child: AllocationDonut(),
         ),
@@ -82,19 +82,19 @@ class _PricesTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       padding: const EdgeInsets.all(16),
-      children: [
-        const PeriodSelector(),
-        const SizedBox(height: 24),
-        const Text('Gold', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-        const SizedBox(height: 16),
-        const SizedBox(
+      children: const [
+        PeriodSelector(),
+        SizedBox(height: 24),
+        Text('Gold', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+        SizedBox(height: 16),
+        SizedBox(
           height: 200,
           child: PriceHistoryChart(isGold: true),
         ),
-        const SizedBox(height: 32),
-        const Text('Silver', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-        const SizedBox(height: 16),
-        const SizedBox(
+        SizedBox(height: 32),
+        Text('Silver', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+        SizedBox(height: 16),
+        SizedBox(
           height: 200,
           child: PriceHistoryChart(isGold: false),
         ),
@@ -108,8 +108,8 @@ class _HistoryTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       padding: const EdgeInsets.all(16),
-      children: [
-        const SizedBox(
+      children: const [
+        SizedBox(
           height: 300,
           child: PurchaseHistoryChart(),
         ),

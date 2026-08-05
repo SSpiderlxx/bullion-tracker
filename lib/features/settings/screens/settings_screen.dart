@@ -118,7 +118,7 @@ class SettingsScreen extends HookConsumerWidget {
             'Biometric Lock',
             trailing: Switch(
               value: false,
-              activeColor: AppColors.gold,
+              activeThumbColor: AppColors.gold,
               onChanged: (v) {},
             ),
           ),

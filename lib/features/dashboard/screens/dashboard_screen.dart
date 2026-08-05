@@ -38,7 +38,7 @@ class DashboardScreen extends HookConsumerWidget {
               expandedHeight: 70.0,
               floating: true,
               pinned: true,
-              backgroundColor: AppColors.backgroundDark.withOpacity(0.9),
+              backgroundColor: AppColors.backgroundDark.withValues(alpha: 0.9),
               elevation: 0,
               flexibleSpace: FlexibleSpaceBar(
                 title: Row(
@@ -129,7 +129,7 @@ class DashboardScreen extends HookConsumerWidget {
                     ],
                   ),
                 ),
-                error: (err, stack) => Center(child: Text('Error: $err', style: TextStyle(color: AppColors.loss))),
+                error: (err, stack) => Center(child: Text('Error: $err', style: const TextStyle(color: AppColors.loss))),
               ),
             ),
           ],
