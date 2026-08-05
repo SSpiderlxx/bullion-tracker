@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/glass_card.dart';
@@ -6,9 +7,10 @@ import '../../../core/widgets/profit_loss_text.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../domain/entities/metal_price.dart';
 import '../../../domain/entities/metal_type.dart';
+import '../../../data/providers/price_providers.dart';
 import 'price_sparkline.dart';
 
-class PriceDetailCard extends StatelessWidget {
+class PriceDetailCard extends HookConsumerWidget {
   final MetalPrice price;
 
   const PriceDetailCard({
@@ -17,17 +19,19 @@ class PriceDetailCard extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final isGold = price.metalType == MetalType.gold;
     final accentColor = isGold ? AppColors.gold : AppColors.silver;
     final metalName = isGold ? 'Gold' : 'Silver';
+
+    final historyAsync = ref.watch(priceHistoryProvider((metal: price.metalType, days: 7)));
 
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: accentColor.withOpacity(0.05),
+            color: accentColor.withValues(alpha: 0.08),
             blurRadius: 20,
             spreadRadius: 2,
           ),
@@ -44,21 +48,30 @@ class PriceDetailCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Container(
-                      width: 40,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        color: accentColor.withOpacity(0.15),
-                        shape: BoxShape.circle,
-                        border: Border.all(color: accentColor.withOpacity(0.5)),
-                      ),
-                      child: Center(
-                        child: Text(
-                          isGold ? 'Au' : 'Ag',
-                          style: GoogleFonts.inter(
-                            color: accentColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.asset(
+                        isGold ? 'assets/images/gold_bar.jpg' : 'assets/images/silver_coin.jpg',
+                        width: 44,
+                        height: 44,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) => Container(
+                          width: 44,
+                          height: 44,
+                          decoration: BoxDecoration(
+                            color: accentColor.withValues(alpha: 0.15),
+                            shape: BoxShape.circle,
+                            border: Border.all(color: accentColor.withValues(alpha: 0.5)),
+                          ),
+                          child: Center(
+                            child: Text(
+                              isGold ? 'Au' : 'Ag',
+                              style: GoogleFonts.inter(
+                                color: accentColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -101,7 +114,7 @@ class PriceDetailCard extends StatelessWidget {
                         CurrencyFormatter.format(price.pricePerTroyOz),
                         style: GoogleFonts.inter(
                           color: AppColors.textPrimaryDark,
-                          fontSize: 32,
+                          fontSize: 30,
                           fontWeight: FontWeight.bold,
                           letterSpacing: -1.0,
                         ),
@@ -110,10 +123,37 @@ class PriceDetailCard extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: PriceSparkline(
-                    data: const [0, 0, 0, 0, 0, 0, 0], // TODO: Add real history data to MetalPrice if needed
-                    color: accentColor,
-                    isPositive: price.changeAmount24h >= 0,
+                  child: historyAsync.when(
+                    data: (history) {
+                      final sparklineData = history.map((p) => p.pricePerTroyOz).toList();
+                      if (sparklineData.isEmpty) {
+                        return PriceSparkline(
+                          data: [price.pricePerTroyOz],
+                          color: accentColor,
+                          isPositive: price.changeAmount24h >= 0,
+                        );
+                      }
+                      return PriceSparkline(
+                        data: sparklineData,
+                        color: accentColor,
+                        isPositive: price.changeAmount24h >= 0,
+                      );
+                    },
+                    loading: () => SizedBox(
+                      height: 50,
+                      child: Center(
+                        child: SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: CircularProgressIndicator(strokeWidth: 2, color: accentColor),
+                        ),
+                      ),
+                    ),
+                    error: (_, __) => PriceSparkline(
+                      data: [price.pricePerTroyOz],
+                      color: accentColor,
+                      isPositive: price.changeAmount24h >= 0,
+                    ),
                   ),
                 ),
               ],
