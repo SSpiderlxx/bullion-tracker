@@ -36,6 +36,33 @@ class MetalIcon extends StatelessWidget {
         break;
     }
 
+    if (type == MetalType.gold) {
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(size * 0.25),
+        child: Image.asset(
+          'assets/images/gold_bar.jpg',
+          width: size,
+          height: size,
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) => _buildFallback(color, Icons.monetization_on),
+        ),
+      );
+    } else if (type == MetalType.silver) {
+      return ClipOval(
+        child: Image.asset(
+          'assets/images/silver_coin.jpg',
+          width: size,
+          height: size,
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) => _buildFallback(color, Icons.monetization_on_outlined),
+        ),
+      );
+    }
+
+    return _buildFallback(color, iconData);
+  }
+
+  Widget _buildFallback(Color color, IconData iconData) {
     return Container(
       width: size,
       height: size,
@@ -45,14 +72,14 @@ class MetalIcon extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            color.withOpacity(0.8),
+            color.withValues(alpha: 0.8),
             color,
-            color.withOpacity(0.6),
+            color.withValues(alpha: 0.6),
           ],
         ),
         boxShadow: [
           BoxShadow(
-            color: color.withOpacity(0.2),
+            color: color.withValues(alpha: 0.2),
             blurRadius: 4,
             spreadRadius: 1,
           ),
@@ -62,9 +89,10 @@ class MetalIcon extends StatelessWidget {
         child: Icon(
           iconData,
           size: size * 0.6,
-          color: Colors.white.withOpacity(0.9),
+          color: Colors.white.withValues(alpha: 0.9),
         ),
       ),
     );
+  }
   }
 }
