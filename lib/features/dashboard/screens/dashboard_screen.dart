@@ -41,18 +41,34 @@ class DashboardScreen extends HookConsumerWidget {
               backgroundColor: AppColors.backgroundDark.withOpacity(0.9),
               elevation: 0,
               flexibleSpace: FlexibleSpaceBar(
-                title: ShaderMask(
-                  shaderCallback: (bounds) => const LinearGradient(
-                    colors: [AppColors.gold, Color(0xFFFFE066)],
-                  ).createShader(bounds),
-                  child: const Text(
-                    'Bullion Tracker',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w800,
-                      letterSpacing: -0.5,
-                      color: Colors.white,
+                title: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(6),
+                      child: Image.asset(
+                        'assets/icons/bullion_logo.jpg',
+                        height: 24,
+                        width: 24,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) => const Icon(Icons.shield, color: AppColors.gold, size: 20),
+                      ),
                     ),
-                  ),
+                    const SizedBox(width: 8),
+                    ShaderMask(
+                      shaderCallback: (bounds) => const LinearGradient(
+                        colors: [AppColors.gold, Color(0xFFFFE066)],
+                      ).createShader(bounds),
+                      child: const Text(
+                        'Bullion Tracker',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: -0.5,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 centerTitle: true,
               ),
