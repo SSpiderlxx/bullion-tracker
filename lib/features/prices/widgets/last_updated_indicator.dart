@@ -37,9 +37,9 @@ class LastUpdatedIndicator extends StatelessWidget {
             ),
             const SizedBox(width: 12),
             Text(
-              'Live Prices • Updates in 45s',
+              'Live Prices • Auto-refreshes every 60s',
               style: GoogleFonts.inter(
-                color: AppColors.textSecondaryDark ?? Colors.grey[400],
+                color: AppColors.textSecondaryDark,
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
               ),

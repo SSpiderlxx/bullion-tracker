@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import '../../../domain/entities/holding.dart';
 import '../../../domain/entities/metal_type.dart';
 import '../../../core/widgets/empty_state.dart';
 import '../widgets/holding_card.dart';
@@ -43,8 +42,8 @@ class HoldingsListScreen extends HookConsumerWidget {
 
           return CustomScrollView(
             slivers: [
-              SliverAppBar.large(
-                title: const Text('My Holdings'),
+              const SliverAppBar.large(
+                title: Text('My Holdings'),
                 pinned: true,
               ),
               SliverToBoxAdapter(

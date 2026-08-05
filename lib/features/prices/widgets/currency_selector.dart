@@ -4,9 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../domain/entities/currency_code.dart';
-
-// Assuming there's a StateProvider or similar for selected currency
-final selectedCurrencyProvider = StateProvider<CurrencyCode>((ref) => CurrencyCode.gbp);
+import '../../../data/providers/price_providers.dart';
 
 class CurrencySelector extends HookConsumerWidget {
   const CurrencySelector({super.key});
@@ -25,7 +23,7 @@ class CurrencySelector extends HookConsumerWidget {
       ),
       child: CupertinoSlidingSegmentedControl<CurrencyCode>(
         backgroundColor: Colors.transparent,
-        thumbColor: AppColors.gold.withOpacity(0.2),
+        thumbColor: AppColors.gold.withValues(alpha: 0.2),
         groupValue: selectedCurrency,
         onValueChanged: (CurrencyCode? value) {
           if (value != null) {
@@ -47,7 +45,7 @@ class CurrencySelector extends HookConsumerWidget {
       child: Text(
         text,
         style: GoogleFonts.inter(
-          color: isSelected ? AppColors.gold : (AppColors.textSecondaryDark ?? Colors.grey[400]),
+          color: isSelected ? AppColors.gold : AppColors.textSecondaryDark,
           fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
           fontSize: 14,
         ),
