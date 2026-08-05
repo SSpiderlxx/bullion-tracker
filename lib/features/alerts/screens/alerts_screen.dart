@@ -63,7 +63,7 @@ class AlertsScreen extends HookConsumerWidget {
                 return AlertCard(
                   alert: alert,
                   onToggle: (enabled) {
-                    ref.read(alertsNotifierProvider.notifier).toggleAlert(alert.id, enabled);
+                    ref.read(alertsNotifierProvider.notifier).toggleAlert(alert, enabled);
                   },
                   onDelete: () {
                     ref.read(alertsNotifierProvider.notifier).deleteAlert(alert.id);

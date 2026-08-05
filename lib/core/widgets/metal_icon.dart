@@ -20,19 +20,11 @@ class MetalIcon extends StatelessWidget {
     switch (type) {
       case MetalType.gold:
         color = AppColors.gold;
-        iconData = Icons.circle; // Placeholder for actual coin/bar icon
+        iconData = Icons.circle;
         break;
       case MetalType.silver:
         color = AppColors.silver;
         iconData = Icons.circle_outlined;
-        break;
-      case MetalType.platinum:
-        color = Colors.blueGrey;
-        iconData = Icons.hexagon;
-        break;
-      case MetalType.palladium:
-        color = Colors.grey.shade400;
-        iconData = Icons.hexagon_outlined;
         break;
     }
 

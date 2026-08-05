@@ -13,8 +13,8 @@ class PriceHistoryChart extends StatelessWidget {
     
     return LineChart(
       LineChartData(
-        gridData: FlGridData(show: false),
-        titlesData: FlTitlesData(
+        gridData: const FlGridData(show: false),
+        titlesData: const FlTitlesData(
           bottomTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
           topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
           rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
@@ -32,7 +32,7 @@ class PriceHistoryChart extends StatelessWidget {
             isCurved: true,
             color: color,
             barWidth: 2,
-            dotData: FlDotData(show: false),
+            dotData: const FlDotData(show: false),
           ),
         ],
       ),

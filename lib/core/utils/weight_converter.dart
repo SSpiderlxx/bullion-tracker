@@ -1,30 +1,30 @@
-enum WeightUnit {
-  grams,
-  troyOunces,
-  kilograms,
-}
+import '../../domain/entities/weight_unit.dart';
 
 sealed class WeightConverter {
   static const double gramsPerTroyOunce = 31.1034768;
 
   static double toGrams(double value, WeightUnit unit) {
     switch (unit) {
-      case WeightUnit.grams:
+      case WeightUnit.gram:
+      case WeightUnit.coin:
+      case WeightUnit.bar:
         return value;
-      case WeightUnit.troyOunces:
+      case WeightUnit.troyOunce:
         return value * gramsPerTroyOunce;
-      case WeightUnit.kilograms:
+      case WeightUnit.kilogram:
         return value * 1000.0;
     }
   }
 
   static double fromGrams(double grams, WeightUnit toUnit) {
     switch (toUnit) {
-      case WeightUnit.grams:
+      case WeightUnit.gram:
+      case WeightUnit.coin:
+      case WeightUnit.bar:
         return grams;
-      case WeightUnit.troyOunces:
+      case WeightUnit.troyOunce:
         return grams / gramsPerTroyOunce;
-      case WeightUnit.kilograms:
+      case WeightUnit.kilogram:
         return grams / 1000.0;
     }
   }
@@ -35,13 +35,6 @@ sealed class WeightConverter {
   }
 
   static String getUnitSymbol(WeightUnit unit) {
-    switch (unit) {
-      case WeightUnit.grams:
-        return 'g';
-      case WeightUnit.troyOunces:
-        return 'oz';
-      case WeightUnit.kilograms:
-        return 'kg';
-    }
+    return unit.shortName;
   }
 }

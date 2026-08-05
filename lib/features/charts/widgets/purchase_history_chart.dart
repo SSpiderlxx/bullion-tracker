@@ -9,8 +9,8 @@ class PurchaseHistoryChart extends StatelessWidget {
   Widget build(BuildContext context) {
     return BarChart(
       BarChartData(
-        gridData: FlGridData(show: false),
-        titlesData: FlTitlesData(
+        gridData: const FlGridData(show: false),
+        titlesData: const FlTitlesData(
           topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
           rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
         ),

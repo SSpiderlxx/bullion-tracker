@@ -4,7 +4,7 @@ import 'repository_providers.dart';
 
 final allAlertsProvider = FutureProvider<List<PriceAlert>>((ref) async {
   final repo = ref.watch(alertsRepositoryProvider);
-  return repo.getAlerts();
+  return repo.getAllAlerts();
 });
 
 class AlertsNotifier extends StateNotifier<AsyncValue<List<PriceAlert>>> {
@@ -18,7 +18,7 @@ class AlertsNotifier extends StateNotifier<AsyncValue<List<PriceAlert>>> {
     state = const AsyncValue.loading();
     try {
       final repo = ref.read(alertsRepositoryProvider);
-      final alerts = await repo.getAlerts();
+      final alerts = await repo.getAllAlerts();
       state = AsyncValue.data(alerts);
     } catch (e, st) {
       state = AsyncValue.error(e, st);
@@ -27,13 +27,23 @@ class AlertsNotifier extends StateNotifier<AsyncValue<List<PriceAlert>>> {
 
   Future<void> addAlert(PriceAlert alert) async {
     final repo = ref.read(alertsRepositoryProvider);
-    await repo.createAlert(alert);
+    await repo.addAlert(alert);
     await loadAlerts();
   }
 
-  Future<void> toggleAlert(String id, bool isEnabled) async {
+  Future<void> toggleAlert(PriceAlert alert, bool isEnabled) async {
     final repo = ref.read(alertsRepositoryProvider);
-    await repo.toggleAlert(id, isEnabled);
+    final updated = PriceAlert(
+      id: alert.id,
+      metalType: alert.metalType,
+      targetPrice: alert.targetPrice,
+      currency: alert.currency,
+      isAbove: alert.isAbove,
+      isEnabled: isEnabled,
+      triggeredAt: alert.triggeredAt,
+      createdAt: alert.createdAt,
+    );
+    await repo.updateAlert(updated);
     await loadAlerts();
   }
 

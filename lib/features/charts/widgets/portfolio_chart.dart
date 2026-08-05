@@ -9,8 +9,8 @@ class PortfolioChart extends StatelessWidget {
   Widget build(BuildContext context) {
     return LineChart(
       LineChartData(
-        gridData: FlGridData(show: false),
-        titlesData: FlTitlesData(
+        gridData: const FlGridData(show: false),
+        titlesData: const FlTitlesData(
           bottomTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
           leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
           topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
@@ -32,13 +32,13 @@ class PortfolioChart extends StatelessWidget {
             color: AppColors.gold,
             barWidth: 3,
             isStrokeCapRound: true,
-            dotData: FlDotData(show: false),
+            dotData: const FlDotData(show: false),
             belowBarData: BarAreaData(
               show: true,
               gradient: LinearGradient(
                 colors: [
-                  AppColors.gold.withOpacity(0.3),
-                  AppColors.gold.withOpacity(0.0),
+                  AppColors.gold.withValues(alpha: 0.3),
+                  AppColors.gold.withValues(alpha: 0.0),
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
