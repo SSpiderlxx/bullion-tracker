@@ -71,15 +71,24 @@ class _MetalRow extends StatelessWidget {
       children: [
         Row(
           children: [
-            Container(
-              width: 32,
-              height: 32,
-              decoration: BoxDecoration(
-                color: color.withOpacity(0.15),
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: color.withOpacity(0.3)),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset(
+                metalName.toLowerCase() == 'gold' ? 'assets/images/gold_bar.jpg' : 'assets/images/silver_coin.jpg',
+                width: 36,
+                height: 36,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) => Container(
+                  width: 36,
+                  height: 36,
+                  decoration: BoxDecoration(
+                    color: color.withValues(alpha: 0.15),
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: color.withValues(alpha: 0.3)),
+                  ),
+                  child: Icon(Icons.circle, color: color, size: 18),
+                ),
               ),
-              child: Icon(Icons.line_weight_outlined, color: color, size: 16),
             ),
             const SizedBox(width: 12),
             Text(
