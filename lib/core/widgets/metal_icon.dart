@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../constants/bullion_products.dart';
+import '../../domain/entities/metal_type.dart';
 import '../theme/app_colors.dart';
 
 class MetalIcon extends StatelessWidget {
@@ -93,6 +93,5 @@ class MetalIcon extends StatelessWidget {
         ),
       ),
     );
-  }
   }
 }
