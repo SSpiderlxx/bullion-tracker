@@ -9,6 +9,7 @@ class AppDatabase {
   factory AppDatabase() => _instance;
   AppDatabase._internal();
 
+  bool _isInitialized = false;
   late Database _db;
 
   // Stream controllers for reactivity
@@ -33,6 +34,7 @@ class AppDatabase {
     final dbFolder = await getApplicationDocumentsDirectory();
     final dbPath = p.join(dbFolder.path, 'bullion_tracker.sqlite');
     _db = sqlite3.open(dbPath);
+    _isInitialized = true;
 
     _createTables();
   }
@@ -122,6 +124,9 @@ class AppDatabase {
     _pricesController.close();
     _alertsController.close();
     _settingsController.close();
-    _db.dispose();
+    if (_isInitialized) {
+      _db.dispose();
+      _isInitialized = false;
+    }
   }
 }
